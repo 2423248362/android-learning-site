@@ -1,0 +1,358 @@
+/* ============================================
+   Android 学习站 — 自定义样式 v6
+   ============================================ */
+
+/* ---------- 1. 品牌色系统 ---------- */
+:root {
+  --vp-c-brand-1: #2e9e5a;
+  --vp-c-brand-2: #3DDC84;
+  --vp-c-brand-3: #2ecc71;
+  --vp-c-brand-soft: rgba(61, 220, 132, 0.14);
+  --vp-c-brand-dimm: rgba(61, 220, 132, 0.06);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #3DDC84, #1a8f4e);
+
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-bg: #2e9e5a;
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-hover-bg: #27875a;
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #fff;
+  --vp-button-brand-active-bg: #1f6e4a;
+}
+
+.dark {
+  --vp-c-brand-1: #3DDC84;
+  --vp-c-brand-2: #5ae69b;
+  --vp-c-brand-3: #3DDC84;
+  --vp-c-brand-soft: rgba(61, 220, 132, 0.12);
+  --vp-c-brand-dimm: rgba(61, 220, 132, 0.04);
+
+  --vp-home-hero-name-background: linear-gradient(135deg, #3DDC84, #69f0ae);
+
+  --vp-button-brand-bg: #3DDC84;
+  --vp-button-brand-hover-bg: #5ae69b;
+  --vp-button-brand-active-bg: #2ecc71;
+  --vp-button-brand-text: #1a1a2e;
+  --vp-button-brand-hover-text: #1a1a2e;
+  --vp-button-brand-active-text: #1a1a2e;
+}
+
+/* ---------- 2. 字体栈 ---------- */
+:root {
+  --vp-font-family-base: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco,
+    Consolas, 'Courier New', monospace;
+}
+
+/* ---------- 3. 平滑滚动 + 主题切换过渡 ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- 4. 首页 Hero ---------- */
+.VPHome .hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 220, 132, 0.10) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(46, 158, 90, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .VPHome .hero-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(61, 220, 132, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(61, 220, 132, 0.04) 0%, transparent 50%);
+}
+
+.VPHero .name {
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+}
+
+.VPHero .text {
+  font-size: 1.4rem;
+  color: var(--vp-c-text-2);
+  margin-top: -4px;
+}
+
+.VPHero .image-src {
+  max-height: 180px;
+  filter: drop-shadow(0 8px 24px rgba(61, 220, 132, 0.18));
+}
+
+/* ---------- 5. Features 区域底纹 ---------- */
+.VPHome .container + .container {
+  position: relative;
+}
+
+.VPHome .container + .container::before {
+  content: '';
+  position: absolute;
+  inset: -24px -48px;
+  background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(61, 220, 132, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .VPHome .container + .container::before {
+  background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(61, 220, 132, 0.02) 0%, transparent 70%);
+}
+
+/* ---------- 6. Features 卡片 ---------- */
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+
+.VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-2);
+  box-shadow: 0 8px 30px rgba(61, 220, 132, 0.12);
+  transform: translateY(-4px);
+}
+
+.VPFeature:hover::before {
+  opacity: 1;
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 8px 30px rgba(61, 220, 132, 0.08);
+}
+
+.VPFeature .icon {
+  width: 40px;
+  height: 40px;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.VPFeature .icon img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ---------- 7. 表格 ---------- */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  font-size: 0.9em;
+}
+
+.vp-doc table thead {
+  background: var(--vp-c-bg-soft);
+}
+
+.vp-doc table th {
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 10px 16px;
+}
+
+.vp-doc table td {
+  padding: 10px 16px;
+}
+
+.vp-doc table tr:not(:last-child) td,
+.vp-doc table tr:not(:last-child) th {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc table tbody tr:hover {
+  background: var(--vp-c-bg-soft);
+  transition: background 0.15s;
+}
+
+/* ---------- 8. 代码块 ---------- */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+  margin: 16px 0;
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+
+.vp-doc div[class*='language-'] code {
+  font-size: 0.875em;
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.875em;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* ---------- 9. 容器 ---------- */
+.vp-doc .custom-block {
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  font-weight: 600;
+}
+
+/* ---------- 10. Mermaid ---------- */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 暗色模式：精准覆写 mermaid 元素，保留品牌绿色 */
+.dark .mermaid .node rect,
+.dark .mermaid .node polygon {
+  fill: #1a3a2a !important;
+  stroke: #3DDC84 !important;
+}
+
+.dark .mermaid .nodeLabel {
+  color: #e8e8e8 !important;
+}
+
+.dark .mermaid .edgePath .path {
+  stroke: #3DDC84 !important;
+}
+
+.dark .mermaid .edgeLabel {
+  background-color: #1e1e2e !important;
+  color: #d0d0d0 !important;
+}
+
+.dark .mermaid .cluster rect {
+  fill: #1a1a2e !important;
+  stroke: #2a4a3a !important;
+}
+
+.dark .mermaid text {
+  fill: #d0d0d0 !important;
+}
+
+/* ---------- 11. 页面入场（仅 h1） ---------- */
+.vp-doc h1:first-of-type {
+  animation: page-enter 0.3s ease-out;
+  position: relative;
+  padding-left: 16px;
+}
+
+.vp-doc h1:first-of-type::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+}
+
+/* h2 间距 + 底部微分隔 */
+.vp-doc h2 {
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- 12. 侧边栏 ---------- */
+.VPSidebarItem.is-active > .item .link {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ---------- 13. 页脚 ---------- */
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+
+/* ---------- 14. 上/下页导航 ---------- */
+.VPDocFooter .pager-link {
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.VPDocFooter .pager-link:hover {
+  border-color: var(--vp-c-brand-2);
+  box-shadow: 0 2px 8px rgba(61, 220, 132, 0.1);
+}
+
+/* ---------- 15. 导航栏 ---------- */
+.VPNav {
+  border-bottom: 1px solid transparent;
+  background-image: linear-gradient(var(--vp-c-bg), var(--vp-c-bg)),
+    linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2), var(--vp-c-brand-1));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.VPNav .VPNavBarTitle img {
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ---------- 16. 移动端 ---------- */
+@media (max-width: 768px) {
+  .VPHero .name {
+    font-size: 1.8rem;
+  }
+  .VPHero .text {
+    font-size: 1.1rem;
+  }
+  .vp-doc table {
+    font-size: 0.82em;
+  }
+  .vp-doc table th,
+  .vp-doc table td {
+    padding: 8px 10px;
+  }
+  .VPFeature .icon {
+    width: 32px;
+    height: 32px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .VPFeature .icon img {
+    width: 32px;
+    height: 32px;
+  }
+}
