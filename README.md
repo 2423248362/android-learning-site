@@ -68,21 +68,25 @@ learn/
 
 ## 效果展示
 
-<table>
-<tr>
-<td align="center"><b>首页</b></td>
-<td align="center"><b>Kotlin 协程</b></td>
-</tr>
-<tr>
-<td><img src="docs/public/images/home.png" alt="首页" width="720" /></td>
-<td><img src="docs/public/images/kotlin-coroutines.png" alt="Kotlin 协程" width="720" /></td>
-</tr>
-<tr>
-<td align="center"><b>Android 学习路径</b></td>
-<td align="center"><b>AI Coding 学习路径</b></td>
-</tr>
-<tr>
-<td><img src="docs/public/images/android-index.png" alt="Android 学习路径" width="720" /></td>
-<td><img src="docs/public/images/ai-coding-index.png" alt="AI Coding 学习路径" width="720" /></td>
-</tr>
-</table>
+![站点演示](docs/public/images/demo.gif)
+
+<details>
+<summary>查看更多页面截图</summary>
+
+**首页**
+
+![首页](docs/public/images/home.png)
+
+**Kotlin 协程**
+
+![Kotlin 协程](docs/public/images/kotlin-coroutines.png)
+
+**Android 学习路径**
+
+![Android 学习路径](docs/public/images/android-index.png)
+
+**AI Coding 学习路径**
+
+![AI Coding 学习路径](docs/public/images/ai-coding-index.png)
+
+</details>
